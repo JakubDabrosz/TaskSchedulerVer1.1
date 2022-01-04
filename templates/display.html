@@ -2,14 +2,33 @@
 {% block title %} {% endblock %}
 
 {% block content %}
+
+
+<style>
+  div {
+    text-align: center;
+  }
+</style>
+
+<div>
 {{'Plik .txt z ilością grup projektujących, zadań wraz z dlugością ich wykonywania (1 wiersz to ilość zadań, grup projektujących): '}}
 <pre>{{display}}</pre>
 
 <pre>{{'Kolejność wykonywania/rozpoczęcia poszczególnych zadań: '}}
 {{seq}}</pre>
 
-<pre> {{'Zestawienie rozpoczęcia się zadań dla poszczególnych grup projektujących: 3D, 2D, Walidacja/Weryfikacja'}}
-{{cmax2}} </pre>
+<pre> {{'Zestawienie rozpoczęcia się zadań dla poszczególnych grup projektujących: '}}
+    {{'3D'}} {{cmax2[0]}}
+    {{'2D'}} {{cmax2[1]}}
+    {{'Walidacja'}} {{cmax2[2]}}
+</pre>
 
-<pre> <p style="max-width:600px;width:100%;text-align:center;"> <img src="{{img}}" ></p> </pre>
+</div>
+
+<div>
+  <img src="{{img}}">
+
+</div>
+
+
 {% endblock %}
