@@ -57,6 +57,7 @@ def jobtime(job_id, data, machines):
     return sum_p
 
 
+
 # zwykly neh
 def neh(data, machines, jobs):
     sequence = []

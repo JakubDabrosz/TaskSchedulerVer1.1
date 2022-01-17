@@ -38,6 +38,8 @@ def upload():
 
 @app.route("/display", methods=["GET", "POST"])
 def save_file():
+    tasks = ['Zadanie 1 - Belki', 'Zadanie 2 - Stropy', 'Zadanie 3 - Sciany', 'Zadanie 4 - Słupy']
+    tab_print = ['table-primary', 'table-secondary', 'table-success', 'table-danger']
     if request.method == "POST":
         f = request.files["file"]
         filename = secure_filename(f.filename)
@@ -50,11 +52,9 @@ def save_file():
         seq, cmax, cmax2 = neh.neh(o, jobs, machines)
         print("NEH:", seq, '\nBest makespan:', cmax2)
         img = "static/" + filename + ".png"
-        for i in range(len(seq)):
-            seq[i] += 1
         graph_neh.graph(cmax2, img)
 
-    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2)
+    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2, o=o, tasks=tasks, tab_print=tab_print)
 
 
 @app.route("/view")
