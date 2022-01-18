@@ -13,13 +13,19 @@
 <br><br>
 
 <h2>Zestawienie przedstawiające czasy trwania poszczególnych zadań dla konkretnego projektowania. </h2>
-<table class="table table-dark">
-    <thead>
+<table class="table">
+    <thead class="table-light">
     <tr>
         <th scope="col"></th>
-        <th scope="col">Projektowanie 3D</th>
-        <th scope="col">Projektowanie 2D</th>
-        <th scope="col">Weryfikacja/Walidacja</th>
+        <th scope="col"><h5>Projektowanie 3D</h5></th>
+        <th scope="col"><h5>Projektowanie 2D</h5></th>
+        <th scope="col"><h5>Weryfikacja/Walidacja</h5></th>
+    </tr>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Czas trwania zadania[h]</th>
+        <th scope="col">Czas trwania zadania[h]</th>
+        <th scope="col">Czas trwania zadania[h]</th>
     </tr>
     </thead>
     <tbody>
@@ -50,101 +56,71 @@
     </tbody>
 </table>
 
-<h2>Poszeregowane zestawienie dla najlepszej sekwencji wykonywania się zadań. </h2>
-<table class="table table-dark">
-    <thead>
+<h2>Poszeregowane zestawienie dla najlepszej sekwencji wykonywania się zadań. {{data_3D}}</h2>
+<table class="table">
+    <thead class="table-light">
     <tr>
         <th scope="col"></th>
-        <th scope="col">Projektowanie 3D</th>
-        <th scope="col">Projektowanie 2D</th>
-        <th scope="col">Weryfikacja/Walidacja</th>
+        <th colspan="2"><h5>Projektowanie 3D</h5></th>
+        <th colspan="2"><h5>Projektowanie 2D</h5></th>
+        <th colspan="2"><h5>Weryfikacja/Walidacja</h5></th>
+    </tr>
+    <tr>
+        <th scope="col"></th>
+        <th scope="col">Czas rozpoczęcia zadania[h]</th>
+        <th scope="col">Czas trwania zadania[h]</th>
+        <th scope="col">Czas rozpoczęcia zadania[h]</th>
+        <th scope="col">Czas trwania zadania[h]</th>
+        <th scope="col">Czas rozpoczęcia zadania[h]</th>
+        <th scope="col">Czas trwania zadania[h]</th>
     </tr>
     </thead>
     <tbody>
     <tr class="{{tab_print[seq[0]]}}">
-        <th scope="row">{{tasks[0]}}</th>
-        <td>{{o[0][seq[0]]}}</td>
-        <td>{{o[1][seq[0]]}}</td>
-        <td>{{o[2][seq[0]]}}</td>
+        <th scope="row">{{tasks[seq[0]]}}</th>
+        <td>{{_3D[0]}}</td>
+        <td>{{_3D[1]}}</td>
+        <td>{{_2D[0]}}</td>
+        <td>{{_2D[1]}}</td>
+        <td>{{_Validation[0]}}</td>
+        <td>{{_Validation[1]}}</td>
     </tr>
     <tr class="{{tab_print[seq[1]]}}">
         <th scope="row">{{tasks[seq[1]]}}</th>
-        <td>{{o[0][seq[1]]}}</td>
-        <td>{{o[1][seq[1]]}}</td>
-        <td>{{o[2][seq[1]]}}</td>
+        <td>{{_3D[2]}}</td>
+        <td>{{_3D[3]}}</td>
+        <td>{{_2D[2]}}</td>
+        <td>{{_2D[3]}}</td>
+        <td>{{_Validation[2]}}</td>
+        <td>{{_Validation[3]}}</td>
     </tr>
     <tr class="{{tab_print[seq[2]]}}">
         <th scope="row">{{tasks[seq[2]]}}</th>
-        <td>{{o[0][seq[2]]}}</td>
-        <td>{{o[1][seq[2]]}}</td>
-        <td>{{o[2][seq[2]]}}</td>
+        <td>{{_3D[4]}}</td>
+        <td>{{_3D[5]}}</td>
+        <td>{{_2D[4]}}</td>
+        <td>{{_2D[5]}}</td>
+        <td>{{_Validation[4]}}</td>
+        <td>{{_Validation[5]}}</td>
     </tr>
     <tr class="{{tab_print[seq[3]]}}">
         <th scope="row">{{tasks[seq[3]]}}</th>
-        <td>{{o[0][seq[3]]}}</td>
-        <td>{{o[1][seq[3]]}}</td>
-        <td>{{o[2][seq[3]]}}</td>
-    </tr>
-    </tbody>
-</table>
-
-<h2>Tabela przedstawiająca czas rozpoczęcia się zadania oraz ilość trwania. </h2>
-
-<table class="table table-dark">
-    <thead>
-    <tr>
-        <th scope="col"></th>
-        <th scope="col">Projektowanie 3D</th>
-        <th scope="col">Projektowanie 2D</th>
-        <th scope="col">Weryfikacja/Walidacja</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="{{tab_print[seq[0]]}}">
-        <th scope="row">{{tasks[0]}}</th>
-        <td>{{o[0][seq[0]]}}</td>
-        <td>{{o[1][seq[0]]}}</td>
-        <td>{{o[2][seq[0]]}}</td>
-    </tr>
-    <tr class="{{tab_print[seq[1]]}}">
-        <th scope="row">{{tasks[seq[1]]}}</th>
-        <td>{{o[0][seq[1]]}}</td>
-        <td>{{o[1][seq[1]]}}</td>
-        <td>{{o[2][seq[1]]}}</td>
-    </tr>
-    <tr class="{{tab_print[seq[2]]}}">
-        <th scope="row">{{tasks[seq[2]]}}</th>
-        <td>{{o[0][seq[2]]}}</td>
-        <td>{{o[1][seq[2]]}}</td>
-        <td>{{o[2][seq[2]]}}</td>
-    </tr>
-    <tr class="{{tab_print[seq[3]]}}">
-        <th scope="row">{{tasks[seq[3]]}}</th>
-        <td>{{o[0][seq[3]]}}</td>
-        <td>{{o[1][seq[3]]}}</td>
-        <td>{{o[2][seq[3]]}}</td>
+        <td>{{_3D[6]}}</td>
+        <td>{{_3D[7]}}</td>
+        <td>{{_2D[6]}}</td>
+        <td>{{_2D[7]}}</td>
+        <td>{{_Validation[6]}}</td>
+        <td>{{_Validation[7]}}</td>
     </tr>
     </tbody>
 </table>
 
 
-<div>
-    Plik .txt z ilością grup projektujących, zadań wraz z dlugością ich wykonywania (1 wiersz to ilość zadań, grup
-    projektujących):
-    <pre><b>{{display}} </b></pre>
-
-    Kolejność wykonywania/rozpoczęcia poszczególnych zadań:
-    <pre><b>{{seq}}</b></pre>
-
-    Zestawienie rozpoczęcia się zadań dla poszczególnych grup projektujących:
-    <pre><b>{{'3D'}} {{cmax2[0]}}
-    {{'2D'}} {{cmax2[1]}}
-        {{'Walidacja'}} {{cmax2[2]}} </b></pre>
-</div>
-
+<h2>Wykres przedstawiający poszeregowaną sekwencję rozpoczęcia zadań.</h2>
 <div>
     <img src="{{img}}">
 </div>
+
 
 {% endblock %}
 

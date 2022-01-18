@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import neh
 import graph_neh
-import matplotlib.pyplot as plt
+
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads/"
@@ -39,7 +39,7 @@ def upload():
 @app.route("/display", methods=["GET", "POST"])
 def save_file():
     tasks = ['Zadanie 1 - Belki', 'Zadanie 2 - Stropy', 'Zadanie 3 - Sciany', 'Zadanie 4 - Słupy']
-    tab_print = ['table-primary', 'table-secondary', 'table-success', 'table-danger']
+    tab_print = ['bg-primary', 'bg-warning', 'bg-success', 'bg-danger']
     if request.method == "POST":
         f = request.files["file"]
         filename = secure_filename(f.filename)
@@ -52,9 +52,9 @@ def save_file():
         seq, cmax, cmax2 = neh.neh(o, jobs, machines)
         print("NEH:", seq, '\nBest makespan:', cmax2)
         img = "static/" + filename + ".png"
-        graph_neh.graph(cmax2, img)
+        _3D, _2D, _Validation = graph_neh.graph(cmax2, seq, img)
 
-    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2, o=o, tasks=tasks, tab_print=tab_print)
+    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2, o=o, tasks=tasks, tab_print=tab_print, _2D=_2D, _3D=_3D, _Validation=_Validation)
 
 
 @app.route("/view")

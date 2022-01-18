@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import os
 
-def graph(best_makespan, filename):
+def graph(best_makespan, seq, filename):
     # Declaring a figure "gnt"
     fig, gnt = plt.subplots()
 
@@ -101,10 +101,13 @@ def graph(best_makespan, filename):
     print("3D: ", graph_3D)
     print("Validation: ", graph_Validation)
     print(" ")
+    graph_colors = ['b', 'y', 'g', 'r']
     gnt.broken_barh(graph_2D, (30, 9),
-                    facecolors=('b', 'g', 'r', 'c', 'm', 'y', 'k'))
+                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
     gnt.broken_barh(graph_3D, (20, 9),
-                    facecolors=('b', 'g', 'r', 'c', 'm', 'y', 'k'))
+                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
     gnt.broken_barh(graph_Validation, (10, 9),
-                    facecolors=('b', 'g', 'r', 'c', 'm', 'y', 'k'))
+                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
     plt.savefig(filename)
+
+    return _2D, _3D, _Validation
