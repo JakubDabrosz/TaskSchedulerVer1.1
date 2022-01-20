@@ -101,13 +101,21 @@ def graph(best_makespan, seq, filename):
     print("3D: ", graph_3D)
     print("Validation: ", graph_Validation)
     print(" ")
-    graph_colors = ['b', 'y', 'g', 'r']
+    graph_colors = tuple()
+    defcolors = tuple()
+    for i in range(len(seq)):
+        graph_colors += ('b', 'y', 'g', 'r')
+    list(graph_colors)
+
+    for j in range(len(seq)):
+        defcolors += tuple(graph_colors[seq[j]])
+
     gnt.broken_barh(graph_2D, (30, 9),
-                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
+                    facecolors=defcolors)
     gnt.broken_barh(graph_3D, (20, 9),
-                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
+                    facecolors=defcolors)
     gnt.broken_barh(graph_Validation, (10, 9),
-                    facecolors=(graph_colors[seq[0]], graph_colors[seq[1]], graph_colors[seq[2]], graph_colors[seq[3]]))
+                    facecolors=defcolors)
     plt.savefig(filename)
 
     return _2D, _3D, _Validation

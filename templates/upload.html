@@ -2,6 +2,9 @@
 {% block title %} {% endblock %}
 
 {% block content %}
+
+<h4>Plik musi być w formacie .txt</h4>
+<br>
 <form action="/display" method="POST"
       enctype="multipart/form-data">
     <input type="file" name="file"/>
@@ -9,7 +12,13 @@
     <input class="btn btn-success" type="submit"/>
     <input class="btn btn-danger" type="reset"/>
 </form>
-
-
+<br><br><br>
+<h5>Przykładowa konfiguracja danych w pliku: </h5>
+Projekt 1 <br>
+3D  2D  Weryfikacja <br>
+Belki  226 117 10 <br>
+Stropy 165 121 10 <br>
+Ściany 62  11  10 <br>
+Słupy  18  31  10 <br>
 
 {% endblock %}

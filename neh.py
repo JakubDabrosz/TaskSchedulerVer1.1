@@ -2,7 +2,6 @@ import os
 import numpy
 
 
-
 # czytanie z pliku
 def file(dir_name):
     last_uploaded_file = dir_name
@@ -55,7 +54,6 @@ def jobtime(job_id, data, machines):
     for i in range(machines):
         sum_p += data[i][job_id]
     return sum_p
-
 
 
 # zwykly neh

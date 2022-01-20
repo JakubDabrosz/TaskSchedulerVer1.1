@@ -5,7 +5,6 @@ from werkzeug.utils import secure_filename
 import neh
 import graph_neh
 
-
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads/"
 app.secret_key = "hello"
@@ -38,8 +37,9 @@ def upload():
 
 @app.route("/display", methods=["GET", "POST"])
 def save_file():
-    tasks = ['Zadanie 1 - Belki', 'Zadanie 2 - Stropy', 'Zadanie 3 - Sciany', 'Zadanie 4 - Słupy']
-    tab_print = ['bg-primary', 'bg-warning', 'bg-success', 'bg-danger']
+    row_colors= ['bg-primary', 'bg-warning', 'bg-success', 'bg-danger']
+    tasks = []
+    tab_print = []
     if request.method == "POST":
         f = request.files["file"]
         filename = secure_filename(f.filename)
@@ -50,11 +50,21 @@ def save_file():
 
         jobs, machines, o = neh.file(app.config["UPLOAD_FOLDER"] + filename)
         seq, cmax, cmax2 = neh.neh(o, jobs, machines)
+
+        for i in range(1, len(seq), 4):
+            tasks.append('Zadanie ' + str(i) + ' - Belki')
+            tasks.append('Zadanie ' + str(i + 1) + ' - Stropy')
+            tasks.append('Zadanie ' + str(i + 2) + ' - Ściany')
+            tasks.append('Zadanie ' + str(i + 3) + ' - Słupy')
+        for j in range(0, len(seq)):
+            tab_print.extend(row_colors)
+        print(tab_print)
         print("NEH:", seq, '\nBest makespan:', cmax2)
         img = "static/" + filename + ".png"
         _3D, _2D, _Validation = graph_neh.graph(cmax2, seq, img)
 
-    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2, o=o, tasks=tasks, tab_print=tab_print, _2D=_2D, _3D=_3D, _Validation=_Validation)
+    return render_template("display.html", display=display, img=img, seq=seq, cmax2=cmax2, o=o, tasks=tasks,
+                           tab_print=tab_print, _2D=_2D, _3D=_3D, _Validation=_Validation, filename=filename)
 
 
 @app.route("/view")
